@@ -174,7 +174,7 @@ DESC 表名		-- 显示表的结构（以表格的形式展现）
 
 
 
-##### 2.5、修改和删除数据表
+##### 2.5、修改和删除数据表（重点）
 
 * 修改表名：ALTER TABLE 旧表名 RENAME AS 新表名
 
@@ -198,9 +198,102 @@ ALTER TABLE student1 CHANGE pwd passd  COMMENT '未知'	-- 不能更改约束条
 ALTER TABLE student1 MODIFY passd VARCHAR(11) COMMENT '密码' -- 不能字段重命名
 ~~~
 
+* 删除表字段	ALTER TABLE 表名 DROP 字段名
+
+~~~sql
+ALTER TABLE student1 DROP age
+~~~
+
+* 删除表	DROP TABLE [IF EXISTS] 表名
+
+~~~sql
+DROP TABLE [IF EXISTS] student1
+~~~
+
+**所有的创建和删除操作尽量加上判断，以免报错**
 
 
 
+ ### 3、MySQL数据库管理
+
+##### 3.1、外键（了解）
+
+~~~sql
+ALTER TABLE 表 ADD CONSTRAINT 约束名 FOREIGN KEY(作为外键约束的列) REFERENCES 那个表（那个字段）
+~~~
+
+##### 3.2、DML语言（必须记住）
+
+DML语言：数据操作语言
+
+######  插入语句（insert）
+
+  格式：` insert into 表名 (字段名1，字段名2，字段名3) values（'值1'，'值2'，'值3'）`
+
+~~~sql
+INSERT INTO `student` (`name`) VALUES('张三')
+~~~
+
+注意事项：
+
+* 字段可以省略，但后面的值必须要一一对应。
+* 可以同时插入多条数据，VALUES后面的值需要逗号（ , ）隔开。`( ),( )... ...`
+
+###### 修改（update）
+
+~~~sql
+--  修改学生姓名，带条件
+UPDATE `student` SET `name`='李四' WHERE id=1		-- 将 id=1 的学生姓名改成李四
+UPDATE `student` SET `name`='王五',`pwd`='admin' WHERE id=1   -- 修改多条值
+
+--  修改学生姓名，不带条件
+UPDATE `student` SET `name`='王五'	-- 将所有学生的姓名改为王五
+UPDATE `student` SET `name`='王五',`pwd`='admin'
+~~~
+
+条件：where 语句，运算符，id 等于某个值，大于某个值，小于某个值，在某个区间内修改。
+
+| 操作符              | 含义         | 范围  | 结果  |
+| ------------------- | ------------ | ----- | ----- |
+| =                   | 等于         | 6=9   | false |
+| <> 或 !=            | 不等于       |       |       |
+| >                   | 大于         |       |       |
+| <                   |              |       |       |
+| >=                  | 大于等于     |       |       |
+| <=                  | 小于等于     |       |       |
+| between ... and ... | 在某个范围内 | [2,5] |       |
+| and                 | &&           |       |       |
+| or                  | \|\| 或      |       |       |
+
+语法：` update 表名 set colnum_name = value,[colnum_name = value,....] where [条件]`
+
+注意：
+
+*  colnum_name 是数据库的列，最好使用` `` `
+* 条件如果，没有指定，则会修改所有的列
+* value，是一个具体的值，也可以是一个变量。
+
+###### 删除：（delete）
+
+语法：`delete from 表名 [where 条件]`
+
+~~~sql
+DELETE FROM `student` WHERE id=1	-- 删除学生表中id=1的学生信息
+~~~
+
+~~~sql
+TRUNCATE `student` 	-- 清空数据表, 完全清空一个数据库表，表的结构和索引，约束都不会变
+~~~
 
 
+
+> delete 和 truncate 区别
+
+* 相同点：都能删除数据库，都不会删除数据结构
+* 不同点：
+
+    * truncate 重新设置自增列，计数器会归零。
+    * truncate 不会影响事务。
+
+### 4、DQL 查询数据（最重要）
 
