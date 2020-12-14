@@ -395,7 +395,56 @@ SELECT `id` , `name` FROM `text` WHERE `name` LIKE '韩_'
 
 
 
+### 5、mysql函数
 
+#### 5.1、常用函数
+
+**用法：** select 函数名(实参)  [from 表名]；
+
+
+
+##### （1）数学运算
+
+~~~sql
+-- 绝对值
+SELECT ABS(-8) -- 结果：8
+
+-- 向上取整
+SELECT CEILING(9.23) -- 结果：10
+
+-- 向下取整
+SELECT FLOOR(9.8) -- 结果：9
+
+-- 返回一个 0~1 之间的随机数
+SELECT RAND()
+
+-- 判断一个数的符号
+SELECT SIGN(8)	-- 结果：1
+SELECT SIGN(0)	-- 结果：0
+SELECT SIGN(-8) -- 结果：-1
+~~~
+
+
+
+##### （2）字符串函数
+
+~~~sql
+-- 判断字符串的长度
+SELECT CHAR_LENGTH('曲终人散')	-- 结果：4
+
+-- 拼接字符串
+SELECT CONCAT('h','e','l','l','o') -- 结果:hello
+
+-- 大写转化成小写
+SELECT LOWER('Hello,Java') -- 结果:hello,java
+
+-- 小写转化成大写
+SELECT UPPER('java')  -- 结果:JAVA
+~~~
+
+
+
+#### 5.2、聚合函数
 
 
 
