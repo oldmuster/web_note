@@ -1,0 +1,14 @@
+ge1 口 https://10.0.0.1   电脑配置10.0.0.44/24
+防火墙   账户sysadmin/auditadmin/secadmin 
+
+
+ge1 口 https://10.50.10.45:8889   电脑配置10.50.10.44/24
+admin/firewall
+
+
+
+
+用户名：admin，密码：admin、admin@123、admin@1234 、 firewall、!1fw@2soc#3vpn
+sysadmin账号密码为sysadmin@123
+secadmin账号密码为secadmin@123
+auditadmin账号密码为auditadmin@123

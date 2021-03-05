@@ -1,0 +1,10 @@
+1.rescue/rescue
+2.ngfw9753124680qwer/ngfw9753124680qwer
+3.极速墙三权版本，审计员修改密码，涉密版本后台账号nimda_sec2015s,密码为admin
+查看密码：show running config
+改密码：config terminal 
+admin user sysadmin
+password !1fw@2soc#3vpn
+祥见：恢复密码.txt
+
+
